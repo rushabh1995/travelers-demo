@@ -1,0 +1,48 @@
+cubes:
+  - name: factinternetsales_view
+    sql_table: metric_catalog.default.factinternetsales_view
+
+    joins: []
+
+    dimensions:
+      - name: salesorderlinenumber
+        sql: salesorderlinenumber
+        type: number
+        primary_key: true
+
+      - name: salesordernumber
+        sql: salesordernumber
+        type: string
+
+      - name: sales_reasons
+        sql: sales_reasons
+        type: string
+
+      - name: product_info
+        sql: product_info
+        type: string
+
+      - name: orderdate
+        sql: orderdate
+        type: string
+
+    measures:
+      - name: count
+        type: count
+
+      - name: orderquantity
+        sql: orderquantity
+        type: sum
+
+      - name: unitprice
+        sql: unitprice
+        type: sum
+
+      - name: salesamount
+        sql: salesamount
+        type: sum
+
+    pre_aggregations:
+      # Pre-aggregation definitions go here.
+      # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
+
