@@ -1,0 +1,12 @@
+views:
+  - name: customers_report
+    description: "This reports generate total customer count per geography (cities, states)"
+
+ 
+
+    cubes:
+      - join_path: models
+        includes:
+          - total_customer_count
+          - stateprovincename
+          - city
