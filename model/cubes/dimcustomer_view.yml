@@ -26,13 +26,13 @@ cubes:
         sql: occupation
         type: string
 
-      - name: fullname
-        sql: fullname
-        type: string
-
       - name: datefirstpurchase
         sql: datefirstpurchase
         type: time
+
+      - name: full_name # concat
+        sql: concat({CUBE.firstname}, {CUBE.lastname})
+        type: string
 
     measures:
       - name: count

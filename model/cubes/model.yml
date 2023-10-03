@@ -1,0 +1,65 @@
+cubes:
+  - name: models
+    description: " This is the fact tables which tells about internet sales data"
+    sql: with  dimgeo_cust as ( select G.geographykey,G.city ,C.gender , G.stateprovincename, C.customerkey  from metric_catalog.default.dimgeography_view G left join metric_catalog.default.dimcustomer_view C on C.geographykey=G.geographykey ) Select F.salesordernumber,F.customerkey, F.salesamount , G_C.city, G_C.stateprovincename,G_C.gender, D.ulldatealternatekey  from metric_catalog.default.factinternetsales_view F left join  metric_catalog.default.dimdate_view D on F.orderdatekey=D.datekey left join  dimgeo_cust G_C on F.customerkey=G_c.customerkey 
+
+
+
+ 
+
+    dimensions:
+      - name: salesordernumber
+        sql: salesordernumber
+        type: number
+        primary_key: true
+
+ 
+
+      - name: city
+        sql: city
+        type: string
+
+ 
+
+      - name: stateprovincename
+        sql: stateprovincename
+        type: string
+
+ 
+
+      - name: gender
+        sql: gender
+        type: string
+
+      - name: ulldatealternatekey
+        sql: ulldatealternatekey
+        type: time
+
+
+ 
+
+    measures:
+      - name: total_customer_count  # 1.newly_metrics_created
+        description: " This measures tells"
+        sql: customerkey
+        type: count_distinct
+
+ 
+
+ 
+
+      - name: salesamount   
+        sql: salesamount
+        type: number
+
+ 
+
+      - name: total_salesamount   # 2.newly_metrics_created
+        sql: sum(salesamount)
+        type: number
+
+    pre_aggregations:
+      - name: users_rollup_by_week
+
+        time_dimension: CUBE.ulldatealternatekey
+        granularity: week
