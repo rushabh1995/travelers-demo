@@ -2,13 +2,21 @@ cubes:
   - name: dimcustomer_view
     sql_table: metric_catalog.default.dimcustomer_view
 
-    joins: []
+    joins:
+      
+      - name: dimgeography_view
+        sql: "{CUBE}.geographykey = {dimgeography_view}.geographykey"
+        relationship: many_to_one
 
     dimensions:
       - name: customerkey
         sql: customerkey
         type: number
         primary_key: true
+
+      - name: geographykey
+        sql: geographykey
+        type: number
 
       - name: firstname
         sql: firstname
@@ -18,24 +26,14 @@ cubes:
         sql: lastname
         type: string
 
-      - name: gender
-        sql: gender
-        type: string
-
-      - name: occupation
-        sql: occupation
-        type: string
-
-      - name: datefirstpurchase
-        sql: datefirstpurchase
-        type: time
-
-      - name: full_name # concat
-        sql: concat({CUBE.firstname}, {CUBE.lastname})
+# Calculated column
+      - name: derived_fullname
+        description: calculated fullname column
+        sql: concat(firstname, lastname)
         type: string
 
     measures:
-      - name: customercount
+      - name: count
         type: count
 
     pre_aggregations:

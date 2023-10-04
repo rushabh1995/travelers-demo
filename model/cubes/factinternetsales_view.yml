@@ -5,7 +5,11 @@ cubes:
     joins:
       - name: dimcustomer_view
         sql: "{CUBE}.customerkey = {dimcustomer_view}.customerkey"
-        relationship: one_to_many
+        relationship: many_to_one
+
+      - name: dimdate_view
+        sql: "{CUBE}.orderdatekey = {dimdate_view}.datekey"
+        relationship: many_to_one
 
     dimensions:
       - name: salesorderlinenumber
@@ -13,33 +17,17 @@ cubes:
         type: number
         primary_key: true
 
-      - name: salesordernumber
-        sql: salesordernumber
-        type: string
+      - name: orderdatekey
+        sql: orderdatekey
+        type: number
 
-      - name: sales_reasons
-        sql: sales_reasons
-        type: string
-
-      - name: product_info
-        sql: product_info
-        type: string
-
-      - name: orderdate
-        sql: orderdate
-        type: string
+      - name: customerkey
+        sql: customerkey
+        type: number
 
     measures:
       - name: count
         type: count
-
-      - name: orderquantity
-        sql: orderquantity
-        type: sum
-
-      - name: unitprice
-        sql: unitprice
-        type: sum
 
       - name: salesamount
         sql: salesamount
