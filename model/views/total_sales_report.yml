@@ -7,11 +7,13 @@ views:
     cubes:
       - join_path: factinternetsales_view
         includes:
-          - total_customer_count
+          - salesamount
+
       - join_path: dimgeography_view
         includes:
           - stateprovincename
           - city
+
       - join_path: dimdate_view
         includes:
           - calendaryear
