@@ -7,6 +7,10 @@ cubes:
         sql: "{CUBE}.customerkey = {dimcustomer_view}.customerkey where {dimcustomer_view}.customerkey = 11000"
         relationship: one_to_many
 
+      - name: dimdate_view
+        sql: "{CUBE}.orderdatekey = {dimdate_view}.datekey"
+        relationship: one_to_many
+
     dimensions:
       - name: salesorderlinenumber
         sql: salesorderlinenumber
