@@ -4,7 +4,7 @@ cubes:
 
     joins:
       - name: dimcustomer_view
-        sql: "{CUBE}.customerkey = {dimcustomer_view}.customerkey"
+        sql: "{CUBE}.customerkey = {dimcustomer_view}.customerkey where {dimcustomer_view}.customerkey = 11000"
         relationship: one_to_many
 
     dimensions:
