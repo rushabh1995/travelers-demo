@@ -1,0 +1,17 @@
+views:
+  - name: total_sales_report
+    description: "This reports generate total sales amount generated per geography (state, city) per calendar year"
+
+ 
+
+    cubes:
+      - join_path: factinternetsales_view
+        includes:
+          - total_customer_count
+      - join_path: dimgeography_view
+        includes:
+          - stateprovincename
+          - city
+      - join_path: dimdate_view
+        includes:
+          - calendaryear
