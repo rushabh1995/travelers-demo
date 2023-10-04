@@ -2,7 +2,10 @@ cubes:
   - name: factinternetsales_view
     sql_table: metric_catalog.default.factinternetsales_view
 
-    joins: []
+    joins:
+      - name: dimcustomer_view
+        sql: "{CUBE}.customerkey = {dimcustomer_view}.customerkey"
+        relationship: one_to_many
 
     dimensions:
       - name: salesorderlinenumber

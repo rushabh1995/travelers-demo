@@ -35,7 +35,7 @@ cubes:
         type: string
 
     measures:
-      - name: count
+      - name: customercount
         type: count
 
     pre_aggregations:

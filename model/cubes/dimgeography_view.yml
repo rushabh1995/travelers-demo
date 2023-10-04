@@ -2,7 +2,10 @@ cubes:
   - name: dimgeography_view
     sql_table: metric_catalog.default.dimgeography_view
 
-    joins: []
+    joins:
+      - name: dimcustomer_view
+        sql: "{CUBE}.geographykey = {dimcustomer_view}.geographykey"
+        relationship: one_to_many
 
     dimensions:
       - name: geographykey
