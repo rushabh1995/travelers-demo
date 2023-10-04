@@ -42,18 +42,14 @@ cubes:
       - name: total_customer_count  # 1.newly_metrics_created
         description: " This measures tells"
         sql: customerkey
-        type: count_distinct
+        type: count_distinct 
 
- 
-
- 
 
       - name: salesamount   
         sql: salesamount
         type: number
 
  
-
       - name: total_salesamount   # 2.newly_metrics_created
         sql: sum(salesamount)
         type: number
