@@ -34,6 +34,11 @@ cubes:
         type: sum
 
     pre_aggregations:
-      # Pre-aggregation definitions go here.
-      # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
+      # - name: main
+      #   measures:
+      #     - factinternetsales_view.salesamount
+      #   dimensions:
+      #     - dimdate_view.calendaryear
+      #     - total_sales_report.city
+      #     - total_sales_report.stateprovincename
 

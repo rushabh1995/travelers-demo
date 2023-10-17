@@ -54,8 +54,8 @@ cubes:
         sql: sum(salesamount)
         type: number
 
-    pre_aggregations:
-      - name: users_rollup_by_week
+    # pre_aggregations:
+    #   - name: users_rollup_by_week
 
-        time_dimension: CUBE.ulldatealternatekey
-        granularity: week
+    #     time_dimension: CUBE.ulldatealternatekey
+    #     granularity: week
